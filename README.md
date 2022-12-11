@@ -13,4 +13,6 @@ current packages:
 |------|-------------|---------|------|------|
 |mwrapper|a meower wrapper for general bots/api usage|ver0.2|❌|[/wrapper.cjs](https://github.com/MeowerBots/jaxon_bots/blob/main/wrapper.cjs)|
 
+[documentation](https://jaxonbots.jaxonbaxon.repl.co)
+
 this is just a general repo for all of my meower bots. please *credit me* if you use any code from here, thanks.
