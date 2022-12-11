@@ -103,12 +103,12 @@ class Bot extends EventEmitter {
             this.ws.send(JSON.stringify({ "cmd": "direct", "val": { "cmd": "post_chat", "val": { "p": message, "chatid": origin } } }))
         }
     }
-    get() {
+    async get() {
         let args = arguments
         if (args.length == 0) return;
         if (args[0] == 'profile') {
             if (args[1]) {
-                fetch('https://api.meower.org/users/' + args[1])
+                await fetch('https://api.meower.org/users/' + args[1])
                     .then(res => res.json())
                     .then(json => {
                         this.return = json
@@ -117,7 +117,7 @@ class Bot extends EventEmitter {
             }
         } else if (args[0] == 'post') {
             if (args[1]) {
-                fetch('https://api.meower.org/posts?id=' + args[1])
+                await fetch('https://api.meower.org/posts?id=' + args[1])
                     .then(res => res.json())
                     .then(json => {
                         this.return = json
@@ -126,7 +126,7 @@ class Bot extends EventEmitter {
             }
         } else if (args[0] == 'page') {
             if (args[1]) {
-                fetch('https://api.meower.org/home?page=' + args[1])
+                await fetch('https://api.meower.org/home?page=' + args[1])
                     .then(res => res.json())
                     .then(json => {
                         this.return = json
