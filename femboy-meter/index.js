@@ -5,7 +5,7 @@ import { JSONFile } from 'lowdb/node';
 import pkg from './wrapper.cjs';
 const { Bot } = pkg;
 
-const bot = new Bot('femboy-meter', '');
+const bot = new Bot('femboy-meter', 'fuckyoubloctans');
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 let trade = {
@@ -192,7 +192,7 @@ bot.on('post', async (message) => {
         } else if (parsed.command == 'update') {
             bot.post(notes, message.origin)
         } else if (parsed.command == 'help') {
-            bot.post('https://femboy-meter-docs.jaxonbaxon.repl.co', message.origin)
+            bot.post('https://jaxonbots.jaxonbaxon.repl.co/femboy.html', message.origin)
         } else if (parsed.command == 'notify' && db.data.hasOwnProperty(message.author)) {
             db.data[message.author].notify = !db.data[message.author].notify
             bot.post(`Set notifications to ${db.data[message.author].notify}`, message.origin)
