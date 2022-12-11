@@ -5,7 +5,7 @@ import { JSONFile } from 'lowdb/node';
 import pkg from './wrapper.cjs';
 const { Bot } = pkg;
 
-const bot = new Bot('femboy-meter', 'furryenjoyer444');
+const bot = new Bot('femboy-meter', '');
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 let trade = {
