@@ -5,7 +5,7 @@ current bots:
 
 | name | description | version | ESM? | path |
 |------|-------------|---------|------|------|
-|femboy-meter|measure your femboy-ness and more.|ver0.3|✅|[/femboy-meter/index.js](https://github.com/MeowerBots/jaxon_bots/blob/main/femboy-meter/index.js)|
+|femboy-meter|measure your femboy-ness and more.|ver0.3.1|✅|[/femboy-meter/index.js](https://github.com/MeowerBots/jaxon_bots/blob/main/femboy-meter/index.js)|
 
 current packages:
 
