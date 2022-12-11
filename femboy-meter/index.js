@@ -12,7 +12,7 @@ let trade = {
     "sell": 15,
     "get": 20
 }
-const notes = 'ver0.3\nwrapper api update, bot can now be used in chats and not just home + more items'
+const notes = 'ver0.3.1\na random amount of interest is given to all players every 5 minutes.'
 const adapter = new JSONFile(join(__dirname, 'db/db.json'));
 const db = new Low(adapter);
 const shop = {
@@ -203,6 +203,16 @@ bot.on('post', async (message) => {
 
 setInterval(async () => { await db.write() }, 5000)
 setInterval(async () => { await db.read() }, 6000)
+setInterval(async () => {
+    let percent = Math.floor(Math.random() * 11)
+    Object.keys(db.data).forEach(user => {
+        let interest = db.data[user].fembucks / 100 * percent
+        db.data[user].fembucks += interest
+        db.data[user].fembucks = Math.floor(db.data[user].fembucks)
+    })
+    bot.post('Interest collected!')
+    await db.write()
+}, 300000)
 setInterval(async () => { 
     trade = { sell: Math.floor(Math.random() * 21) + 1, get: Math.floor(Math.random() * 21) + 6 }
     if (trade.sell < trade.get) {
