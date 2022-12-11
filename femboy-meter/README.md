@@ -3,4 +3,4 @@ requirements:
 - wrapper.cjs
 - lowdb
 
-[bot commands](https://femboy-meter-docs.jaxonbaxon.repl.co/)
+[bot commands](https://jaxonbots.jaxonbaxon.repl.co/femboy.html)
