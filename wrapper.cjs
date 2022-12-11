@@ -69,20 +69,20 @@ class Bot extends EventEmitter {
         })
         this.ws.on('message', (data) => {
             let msg = JSON.parse(data)
-            let message = { "content": "", "author": "", "timestamp": "" }
+            let message = {}
             if (msg.val.type == 1) {
                 try {
+                    message.timestamp = msg.val.t.e
+                    message.origin = msg.val.post_origin
                     if (msg.val.u == this.username) {
                         return;
                     } else if (msg.val.u == 'Discord') {
                         message.content = msg.val.p.split(': ')[1]
                         message.author = msg.val.p.split(': ')[0]
-                        message.timestamp = msg.val.t.e
                         this.emit('post', message)
                     } else {
                         message.content = msg.val.p
                         message.author = msg.val.u
-                        message.timestamp = msg.val.t.e
                         this.emit('post', message)
                     }
                 } catch (err) {
@@ -94,8 +94,14 @@ class Bot extends EventEmitter {
             this.emit('error', err)
         })
     }
-    post(message) {
-        this.ws.send(JSON.stringify({ "cmd": "direct", "val": { "cmd": "post_home", "val": message } }))
+    post(message, origin) {
+        if (!message) return;
+        if (!origin) origin = "home";
+        if (origin == "home") {
+            this.ws.send(JSON.stringify({ "cmd": "direct", "val": { "cmd": "post_home", "val": message } }))
+        } else {
+            this.ws.send(JSON.stringify({ "cmd": "direct", "val": { "cmd": "post_chat", "val": { "p": message, "chatid": origin } } }))
+        }
     }
     get() {
         let args = arguments
