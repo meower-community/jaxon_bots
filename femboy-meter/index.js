@@ -3,9 +3,10 @@ import { fileURLToPath } from 'url';
 import { Low } from 'lowdb';
 import { JSONFile } from 'lowdb/node';
 import pkg from './wrapper.cjs';
+import * as fs from 'node:fs';
 const { Bot } = pkg;
 
-const bot = new Bot('femboy-meter', 'fuckyoubloctans');
+const bot = new Bot('femboy-meter', '');
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 let trade = {
@@ -153,8 +154,9 @@ bot.on('post', async (message) => {
                         }
                         let use = shop[parsed.args[0]]['use-msg'][Math.floor(Math.random() * shop[parsed.args[0]]['use-msg'].length)]
                         db.data[message.author].meter += shop[parsed.args[0]].femgain
-                        let ulist = bot.get('ulist')
-                        bot.post(use.replace(/#/g, ulist[Math.floor(Math.random() * ulist.length)]), message.origin)
+                        let ulist = await bot.get('ulist')
+                        use = use.replace(/#/g, ulist[Math.floor(Math.random() * ulist.length)])
+                        bot.post(use, message.origin)
                     } else {
                         bot.post(`You can't equip that!`, message.origin)
                     }
@@ -202,7 +204,6 @@ bot.on('post', async (message) => {
 })
 
 setInterval(async () => { await db.write() }, 5000)
-setInterval(async () => { await db.read() }, 6000)
 setInterval(async () => {
     let percent = Math.floor(Math.random() * 11)
     Object.keys(db.data).forEach(user => {
@@ -210,7 +211,6 @@ setInterval(async () => {
         db.data[user].fembucks += interest
         db.data[user].fembucks = Math.floor(db.data[user].fembucks)
     })
-    bot.post('Interest collected!')
     await db.write()
 }, 300000)
 setInterval(async () => { 
