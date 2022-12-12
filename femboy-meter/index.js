@@ -6,7 +6,7 @@ import pkg from './wrapper.cjs';
 import * as fs from 'node:fs';
 const { Bot } = pkg;
 
-const bot = new Bot('femboy-meter', '');
+const bot = new Bot('femboy-meter', process.env.PASS);
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 let trade = {
