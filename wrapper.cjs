@@ -76,7 +76,7 @@ class Bot extends EventEmitter {
                     message.origin = msg.val.post_origin
                     if (msg.val.u == this.username) {
                         return;
-                    } else if (msg.val.u == 'Discord') {
+                    } else if (msg.val.u == 'Discord' || msg.val.u == "Webhooks") {
                         message.content = msg.val.p.split(': ')[1]
                         message.author = msg.val.p.split(': ')[0]
                         this.emit('post', message)
