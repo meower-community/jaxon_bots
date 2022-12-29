@@ -3,10 +3,13 @@ import { fileURLToPath } from 'url';
 import { Low } from 'lowdb';
 import { JSONFile } from 'lowdb/node';
 import pkg from './wrapper.cjs';
+import { config } from 'dotenv';
 import * as fs from 'node:fs';
 const { Bot } = pkg;
 
-const bot = new Bot('femboy-meter', process.env.PASS);
+config();
+console.log(process.env.PASS)
+const bot = new Bot('fem', process.env.PASS);
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 let trade = {
@@ -207,7 +210,7 @@ setInterval(async () => { await db.write() }, 5000)
 setInterval(async () => {
     let percent = Math.floor(Math.random() * 11)
     Object.keys(db.data).forEach(user => {
-        let interest = db.data[user].fembucks / 100 * percent
+        let interest = (db.data[user].fembucks / 100 * percent) / 100
         db.data[user].fembucks += interest
         db.data[user].fembucks = Math.floor(db.data[user].fembucks)
     })
