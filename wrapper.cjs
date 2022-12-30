@@ -12,6 +12,10 @@ class Bot extends EventEmitter {
         this.return = "";
         this.ulist = [];
     }
+    send(data) {
+        if (this.ws.readyState != 1) return;
+        this.ws.send(data);
+    }
     login() {
         this.ws.on('open', () => {
             this.ws.send(JSON.stringify({
@@ -95,6 +99,7 @@ class Bot extends EventEmitter {
         })
     }
     post(message, origin) {
+        if (this.ws.readyState != 1) return;
         if (!message) return;
         if (!origin) origin = "home";
         if (origin == "home") {
@@ -102,6 +107,10 @@ class Bot extends EventEmitter {
         } else {
             this.ws.send(JSON.stringify({ "cmd": "direct", "val": { "cmd": "post_chat", "val": { "p": message, "chatid": origin } } }))
         }
+    }
+    signout() {
+        if (this.ws.readyState !== 1) return;
+        this.ws.close()
     }
     async get() {
         let args = arguments
