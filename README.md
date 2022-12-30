@@ -11,7 +11,7 @@ current packages:
 
 | name | description | version | ESM? | path |
 |------|-------------|---------|------|------|
-|mwrapper|a meower wrapper for general bots/api usage|ver0.2|⚠️|[/wrapper.cjs](https://github.com/MeowerBots/jaxon_bots/blob/main/wrapper.cjs)|
+|mwrapper|a meower wrapper for general bots/api usage|ver0.3|⚠️|[/wrapper.cjs](https://github.com/MeowerBots/jaxon_bots/blob/main/wrapper.cjs)|
 
 [documentation](https://jaxonbots.jaxonbaxon.repl.co)
 
