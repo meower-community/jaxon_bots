@@ -1,6 +1,8 @@
 # jaxon's bots
 bots made by jaxonbaxon for meower (may or may not be updated)
 
+latest mwrapper is on NPM! check it out: https://www.npmjs.com/package/mwrapper
+
 current bots:
 
 | name | description | version | ESM? | path |
