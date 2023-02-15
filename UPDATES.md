@@ -2,6 +2,11 @@
 
 an update log for files and bots alike. starts at mwrapper 0.3.
 
+## mwrapper 0.4
+
+- Added typing indicator
+- Added logging
+
 ## mwrapper 0.3.2
 
 - Fixed README.md in npm package
